@@ -23,6 +23,14 @@ void CoinManager::inicializeCoin()
 	}
 }
 
+void CoinManager::decreaseCoin()
+{
+	mapCoins--;
+	if (mapCoins == 0)
+	{
+		inicializeCoin();
+	}
+}
 
 
 CoinManager::~CoinManager()

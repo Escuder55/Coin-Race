@@ -11,6 +11,7 @@ public:
 
 	CoinManager(int dificultad, Map &m);
 	void inicializeCoin();
+	void decreaseCoin();
 	~CoinManager();
 };
 
