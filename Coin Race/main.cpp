@@ -11,7 +11,7 @@
 
 void main() 
 {
-
+	srand((unsigned int)time((time_t *)NULL));
 	int difficulty;
 	
 	std::cout << " CHOOSE YOUR DIFFICULTY: \n" <<"\n" <<
