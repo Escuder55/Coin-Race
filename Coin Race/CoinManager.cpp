@@ -1,5 +1,6 @@
 #include "CoinManager.h"
 #include<stdlib.h>
+#include"Map.h"
 
 
 CoinManager::CoinManager(int dificultad, Map &m) :m(m)

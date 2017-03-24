@@ -3,11 +3,12 @@
 #include"Input.h"
 #include<iostream>
 #include"CoinManager.h"
+#include"Map.h"
 
 
 
 
-Player::Player(int x, int y, Map &m):m(m), c(c) 
+Player::Player(Map &m, CoinManager &c):m(m), c(c) 
 {
 	do {
 		x = rand() % m.getColumnas();
@@ -16,8 +17,9 @@ Player::Player(int x, int y, Map &m):m(m), c(c)
 	} while (m.getCelda(x, y) != '.');
 	m.modifyMap(x, y, '@');
 }
-void Player::updatePlayer(Input::Key Keypressed,Map &m,CoinManager &c)
+bool Player::updatePlayer(Input::Key Keypressed,Map &m,CoinManager &c)
 {
+	bool exit = false;
 	switch (Keypressed)
 	{
 		case Input::Key::W:
@@ -43,7 +45,7 @@ void Player::updatePlayer(Input::Key Keypressed,Map &m,CoinManager &c)
 				if (x != 0)
 				{
 					m.modifyMap(x, y, '.');
-						x--;
+					x--;
 					if (m.getCelda(x, y) == '$')
 					{
 						PlayerScore++;
@@ -98,10 +100,10 @@ void Player::updatePlayer(Input::Key Keypressed,Map &m,CoinManager &c)
 		case Input::Key::ESC:
 			char answer;
 			std::cout << "Are you sure you want to exit the Game? (Y/N)";
-			std::cin >> answer >> std::endl;
+			std::cin >> answer ;
 				if (answer == 'y' || answer == 'Y')
 				{
-					//AQUI HACER QUE EL JUEGO SALGA DEL GAMELOOP
+					exit = true;
 				}
 				if (answer == 'n' || answer == 'N')
 				{
@@ -109,11 +111,16 @@ void Player::updatePlayer(Input::Key Keypressed,Map &m,CoinManager &c)
 				}
 				
 	}
+	return exit;
 
+}
+
+int Player::getPlayerScore()
+{
+	return PlayerScore;
 }
 
 Player::~Player()
 {
-	
-}
+
 }

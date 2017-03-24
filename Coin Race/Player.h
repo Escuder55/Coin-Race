@@ -4,6 +4,7 @@
 #include"Input.h"
 #include<iostream>
 #include"CoinManager.h"
+#include"Map.h"
 class Player
 {
 private:
@@ -17,8 +18,9 @@ private:
 public:
 
 
-	Player(int x, int y, Map &m,CoinManager &c);
-	void updatePlayer(Input::Key Keypressed, Map &m, CoinManager &c);
+	Player(Map &m,CoinManager &c);
+	bool updatePlayer(Input::Key Keypressed, Map &m, CoinManager &c);
+	int getPlayerScore();
 	~Player();
 };
 

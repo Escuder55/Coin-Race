@@ -1,13 +1,14 @@
 #pragma once
+#include<stdlib.h>
 class Map
 {
-private:
 
+public:
 	char **mapa;
 	int filas;
 	int columnas;
 
-public:
+
 
 	Map(int dificultat);
 
