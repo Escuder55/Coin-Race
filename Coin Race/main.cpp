@@ -7,13 +7,17 @@
 #include<iostream>
 #include<ctime>
 #include<cstdlib>
+#include<time.h>
 
 
 void main() 
 {
 	srand((unsigned int)time((time_t *)NULL));
 	int difficulty;
-	
+	std::cout << "/////////////////////////////////" << "\n" <<
+		"	    COIN RACE" << "\n" <<
+		"/////////////////////////////////" << std::endl;
+				
 	std::cout << " CHOOSE YOUR DIFFICULTY: \n" <<"\n" <<
 					"	1.EASY			" << "\n" << "\n" <<
 					"	2.MEDIUM		" << "\n" << "\n" <<
@@ -26,10 +30,16 @@ void main()
 	int maxScore = ((30 * difficulty + rand() % 30 * difficulty));
 	Input::Key keyPressed;
 	bool exitGame = false;
+	clock_t start, end;
+	start = clock();
 
 	system("cls");
+
+
+	std::cout << "/////////////////////////////////" << "\n" <<
+		"	    COIN RACE" << "\n" <<
+		"/////////////////////////////////" << std::endl;
 	
-	std::cout << myCoin.getMapCoins() << std::endl;
 
 	for (int i = 0; i < myMap.getFilas(); i++)
 	{
@@ -54,6 +64,9 @@ void main()
 			if (keyPressed != Input::Key::NONE)
 			{
 				system("cls");
+				std::cout << "/////////////////////////////////" << "\n" <<
+					"	    COIN RACE" << "\n" <<
+					"/////////////////////////////////" << std::endl;
 				for (int i = 0; i < myMap.getFilas(); i++)
 				{
 					for (int j = 0; j < myMap.getColumnas(); j++)
@@ -65,8 +78,22 @@ void main()
 				std::cout << "\n" << "\n" << "SCORE:  " << myPlayer.getPlayerScore() <<"\n"<<"MAX SCORE: " 
 					<< maxScore << std::endl;
 			}
+
+			if (myPlayer.getPlayerScore() == maxScore)
+			{
+				end = (clock() - start)/1000;
+				system("cls");
+				std::cout << "\n" << "\n" << "\n" <<
+					"		CONGRATULATIONS YOU HAVE WON!!!!!" << "\n"<< "\n" <<
+					"		YOU GOT MAX SCORE " <<maxScore << " IN "<< end << " SECONDS"<<std::endl;
+				break;
+			}
+
+			if (exitGame == true )
+				break;
 	}
+	/*Map::~Map();
+	CoinManager::~CoinManager();
+	Player::~myPlayer();*/
 
-
-	
 }

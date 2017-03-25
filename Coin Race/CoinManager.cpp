@@ -11,6 +11,8 @@ void CoinManager::inicializeCoin()
 {
 	int x, y;
 	mapCoins = ((3 + rand()%10))*( m.getFilas() * m.getColumnas())/100;
+	if (mapCoins < 1)
+		mapCoins = 1;
 	//mapCoins = 10;
 	for (int i = 0; i < mapCoins; i++)
 	{
@@ -32,10 +34,7 @@ void CoinManager::decreaseCoin()
 		inicializeCoin();
 	}
 }
-int CoinManager::getMapCoins()
-{
-	return mapCoins;
-}
+
 
 
 CoinManager::~CoinManager()
