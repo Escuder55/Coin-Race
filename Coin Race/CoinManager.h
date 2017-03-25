@@ -11,6 +11,7 @@ private:
 public:
 
 	CoinManager(int dificultad, Map &m);
+	int getMapCoins();
 	void inicializeCoin();
 	void decreaseCoin();
 	~CoinManager();

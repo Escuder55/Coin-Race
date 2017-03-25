@@ -6,7 +6,7 @@
 #include<stdlib.h>
 #include<iostream>
 #include<ctime>
-
+#include<cstdlib>
 
 
 void main() 
@@ -27,6 +27,10 @@ void main()
 	Input::Key keyPressed;
 	bool exitGame = false;
 
+	system("cls");
+	
+	std::cout << myCoin.getMapCoins() << std::endl;
+
 	for (int i = 0; i < myMap.getFilas(); i++)
 	{
 		for (int j = 0; j < myMap.getColumnas(); j++)
@@ -35,23 +39,33 @@ void main()
 		}
 		std::cout << std::endl;
 	}
-
-
-
-	/*while (myPlayer.getPlayerScore() < maxScore || exitGame == false)
-	{
-		for (int i = 0; i < myMap.getFilas(); i++)
-		{
-			for (int j = 0; j < myMap.getColumnas(); j++)
-			{
-				std::cout<< " " << myMap.getCelda(i, j) << " |";
-			}
-			std::cout << std::endl;
-		} 
-	}*/
-
+	std::cout << "\n" << "\n" << "SCORE:  " << myPlayer.getPlayerScore() << "\n" << "MAX SCORE: "
+		<< maxScore << std::endl;
 
 	
+
+
+	while (myPlayer.getPlayerScore() < maxScore || exitGame == false)
+	{
+		keyPressed = Input::getKey();
+		exitGame = myPlayer.updatePlayer(keyPressed, myMap, myCoin);
+		
+
+			if (keyPressed != Input::Key::NONE)
+			{
+				system("cls");
+				for (int i = 0; i < myMap.getFilas(); i++)
+				{
+					for (int j = 0; j < myMap.getColumnas(); j++)
+					{
+						std::cout << " " << myMap.getCelda(i, j) << " |";
+					}
+					std::cout << std::endl;
+				}
+				std::cout << "\n" << "\n" << "SCORE:  " << myPlayer.getPlayerScore() <<"\n"<<"MAX SCORE: " 
+					<< maxScore << std::endl;
+			}
+	}
 
 
 	

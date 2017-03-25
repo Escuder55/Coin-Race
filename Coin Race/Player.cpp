@@ -10,6 +10,7 @@
 
 Player::Player(Map &m, CoinManager &c):m(m), c(c) 
 {
+	PlayerScore = 0;
 	do {
 		x = rand() % m.getColumnas();
 		y = rand() % m.getFilas();
@@ -23,25 +24,6 @@ bool Player::updatePlayer(Input::Key Keypressed,Map &m,CoinManager &c)
 	switch (Keypressed)
 	{
 		case Input::Key::W:
-				if (y != 0)
-				{
-					m.modifyMap(x, y, '.');
-					y++;
-					if (m.getCelda(x, y) == '$')
-					{
-						PlayerScore++;
-						c.decreaseCoin();
-					}
-					m.modifyMap(x, y, '@');
-				}
-				else
-				{
-					std::cout << "You can't do this movement!!" << std::endl;
-				}
-				break;
-
-		case Input::Key::A:
-
 				if (x != 0)
 				{
 					m.modifyMap(x, y, '.');
@@ -59,9 +41,9 @@ bool Player::updatePlayer(Input::Key Keypressed,Map &m,CoinManager &c)
 				}
 				break;
 
-		case Input::Key::S:
+		case Input::Key::A:
 
-				if (y != m.getFilas())
+				if (y != 0)
 				{
 					m.modifyMap(x, y, '.');
 					y--;
@@ -78,12 +60,31 @@ bool Player::updatePlayer(Input::Key Keypressed,Map &m,CoinManager &c)
 				}
 				break;
 
-		case Input::Key::D:
+		case Input::Key::S:
 
-				if (y != m.getColumnas())
+				if (x != m.getFilas()-1)
 				{
 					m.modifyMap(x, y, '.');
 					x++;
+					if (m.getCelda(x, y) == '$')
+					{
+						PlayerScore++;
+						c.decreaseCoin();
+					}
+					m.modifyMap(x, y, '@');
+				}
+				else
+				{
+					std::cout << "You can't do this movement!!" << std::endl;
+				}
+				break;
+
+		case Input::Key::D:
+
+				if (y != m.getColumnas()-1)
+				{
+					m.modifyMap(x, y, '.');
+					y++;
 					if (m.getCelda(x, y) == '$')
 					{
 						PlayerScore++;

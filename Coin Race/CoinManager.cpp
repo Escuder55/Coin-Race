@@ -10,8 +10,8 @@ CoinManager::CoinManager(int dificultad, Map &m) :m(m)
 void CoinManager::inicializeCoin()
 {
 	int x, y;
-	mapCoins = (int)((3 + rand()%10)/100)*( m.getFilas() * m.getColumnas()) ;
-	//mapCoins = (rand() % 10) + 3;
+	mapCoins = ((3 + rand()%10))*( m.getFilas() * m.getColumnas())/100;
+	//mapCoins = 10;
 	for (int i = 0; i < mapCoins; i++)
 	{
 		do {
@@ -31,6 +31,10 @@ void CoinManager::decreaseCoin()
 	{
 		inicializeCoin();
 	}
+}
+int CoinManager::getMapCoins()
+{
+	return mapCoins;
 }
 
 
