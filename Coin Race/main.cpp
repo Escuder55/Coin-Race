@@ -92,8 +92,5 @@ void main()
 			if (exitGame == true )
 				break;
 	}
-	/*Map::~Map();
-	CoinManager::~CoinManager();
-	Player::~myPlayer();*/
-
+	
 }

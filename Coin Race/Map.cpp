@@ -44,4 +44,11 @@ char Map::getCelda(int x, int y)
 
 Map::~Map()
 {
+	for (int i = 0; i < filas; i++)
+	{
+		delete[] mapa[i];
+	}
+	delete[] mapa;
+	mapa = nullptr;
+
 }
